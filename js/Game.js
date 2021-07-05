@@ -74,6 +74,10 @@ class Game {
                   cars[index - 1].shapeColor = "red";
                   camera.position.x = displayWidth/2;
                   camera.position.y = cars[index-1].y
+                  if (cars[index-1].isTouching(obstaclesGroup)){
+                    yVel-=0.9;
+                    carCrash.play();
+                  }
                 }
                
               }
@@ -81,7 +85,7 @@ class Game {
             }
         
             
-            if(player.distance < 2150){
+            if(player.distance < 2500){
               if(keyIsDown(38) && player.index !== null){
                   yVel += 0.9;
                   if(keyIsDown(37)){
